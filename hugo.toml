@@ -1,0 +1,11 @@
+baseURL = 'https://finally.sykose.xyz'
+languageCode = 'en-us'
+title = 'Too Short to Not Read'
+theme='lugo'
+[params]
+	indexarticles = 16
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.3"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<title>Too Short to Not Read</title>
+	<link rel="canonical" href="http://localhost:1313/">
+	<link rel='alternate' type='application/rss+xml' title="Too Short to Not Read RSS" href='/index.xml'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+	<link rel="icon" href="/favicon.ico">
+	<meta name="description" content="Simple and fast guide-style website, no ads, no bloat, no fluff.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index, follow">
+	<meta charset="utf-8">
+</head>
+<body>
+<main>
+<header><h1 id="tag_Too Short to Not Read">
+Too Short to Not Read
+</h1></header>
+<article>
+
+<h2 id="what-do-you-want-to-do">What do you want to do?</h2>
+<div class="search js-only">
+  <input id="search" type="text" placeholder="Search guides..." />
+  <button id="clear-search" title="Clear search">✖</button>
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+  for (const e of document.getElementsByClassName("js-only")) {
+    e.classList.remove("js-only");
+  }
+
+  const guides = document.querySelectorAll("#artlist li");
+  const search = document.getElementById("search");
+  const clearSearch = document.getElementById("clear-search");
+  const artlist = document.getElementById("artlist");
+
+  search.addEventListener("input", () => {
+    const searchText = search.value.toLowerCase().trim().normalize('NFD').replace(/\p{Diacritic}/gu, "");
+    const searchTerms = searchText.split(" ");
+    const hasFilter = searchText.length > 0;
+
+    artlist.classList.toggle("list-searched", hasFilter);
+
+    guides.forEach(guide => {
+      const searchString = `${guide.textContent} ${guide.dataset.tags}`.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, "");
+      const isMatch = searchTerms.every(term => searchString.includes(term));
+
+      guide.hidden = !isMatch;
+      guide.classList.toggle("matched-recipe", hasFilter && isMatch);
+    });
+  });
+
+  clearSearch.addEventListener("click", () => {
+    search.value = "";
+    guides.forEach(guide => {
+      guide.hidden = false;
+      guide.classList.remove("matched-recipe");
+    });
+    artlist.classList.remove("list-searched");
+  });
+});
+
+</script>
+<h2 id="check-out-these-new-guides">Check out these new guides!</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ul id="artlist">
+
+
+  
+    
+    <li data-tags="[mortgage finance amortization]" >
+      <a href="http://localhost:1313/calculate-amortization/calculate-amortization/">Calculate Amortization</a>
+    </li>
+  
+
+  
+    
+    <li data-tags="[emacs linux]" >
+      <a href="http://localhost:1313/how-to-install-emacs/">How to Install Emacs</a>
+    </li>
+  
+
+  
+    
+    <li data-tags="[phone]" >
+      <a href="http://localhost:1313/how-to-charge-phone/">How to Charge Phone</a>
+    </li>
+  
+
+  
+    
+    <li data-tags="[tmux terminal]" >
+      <a href="http://localhost:1313/how-to-use-tmux/">How to Use Tmux</a>
+    </li>
+  
+
+  
+    
+    <li data-tags="[python virtualenv]" >
+      <a href="http://localhost:1313/how-to-create-python-virtual-environment/">How to Create Python Virtual Environment</a>
+    </li>
+  
+
+  
+
+  
+    
+    <li data-tags="[linux vim]" >
+      <a href="http://localhost:1313/how-to-exit-vim/">How to Exit Vim</a>
+    </li>
+  
+
+</ul>
+
+<h2 id="or-browse-by-category">Or Browse by Category&hellip;</h2>
+
+
+<div style="text-align: center;"><a id="tag_amortization" href="http://localhost:1313/tags/amortization/">amortization</a> | <a id="tag_emacs" href="http://localhost:1313/tags/emacs/">emacs</a> | <a id="tag_finance" href="http://localhost:1313/tags/finance/">finance</a> | <a id="tag_linux" href="http://localhost:1313/tags/linux/">linux</a> | <a id="tag_mortgage" href="http://localhost:1313/tags/mortgage/">mortgage</a> | <a id="tag_phone" href="http://localhost:1313/tags/phone/">phone</a> | <a id="tag_python" href="http://localhost:1313/tags/python/">python</a> | <a id="tag_terminal" href="http://localhost:1313/tags/terminal/">terminal</a> | <a id="tag_tmux" href="http://localhost:1313/tags/tmux/">tmux</a> | <a id="tag_vim" href="http://localhost:1313/tags/vim/">vim</a> | <a id="tag_virtualenv" href="http://localhost:1313/tags/virtualenv/">virtualenv</a></div>
+
+<h2 id="learn-about-this-website">Learn about this website</h2>
+<p>Read the <a href="/about/about">about</a> page to learn more about this website.</p>
+
+
+
+
+</article>
+</main>
+
+<footer>
+	<a href="http://localhost:1313/">http://localhost:1313/</a><br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+</footer>
+
+</body>
+</html>

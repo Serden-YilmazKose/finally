@@ -1,0 +1,12 @@
+<!-- Made using ChatGPT because I DON'T CARE!1!! -->
+
+<div style="text-align: center;">
+{{- $tags := slice -}}
+{{- range $name, $taxonomy := .Site.Taxonomies.tags -}}
+  {{- $tags = $tags | append (dict "name" $name "permalink" $taxonomy.Page.Permalink) -}}
+{{- end -}}
+
+{{- range $i, $tag := sort $tags "name" -}}
+  <a id="tag_{{ $tag.name | urlize }}" href="{{ $tag.permalink }}">{{ $tag.name }}</a>{{ if lt (add $i 1) (len $tags) }} | {{ end }}
+{{- end -}}
+</div>

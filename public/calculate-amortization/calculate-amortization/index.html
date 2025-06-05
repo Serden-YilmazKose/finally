@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<title>Calculate Amortization | Too Short to Not Read</title>
+	<link rel="canonical" href="http://localhost:1313/">
+	<link rel='alternate' type='application/rss+xml' title="Too Short to Not Read RSS" href='/index.xml'>
+	<link rel='stylesheet' type='text/css' href='/style.css'>
+	<link rel="icon" href="/favicon.ico">
+	<meta name="description" content="Calculate your amortization
+All you need to do is input the following:
+
+Price
+Length of mortage, in years
+Projected interest rate, in %
+
+
+  Loan Amount:
+    
+  
+Annual Interest Rate (%):
+
+
+Loan Term (Years):
+
+
+Calculate
+
+
+">
+	<meta name="keywords" content="mortgage, finance, amortization">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="robots" content="index, follow">
+	<meta charset="utf-8">
+</head>
+<body>
+<main>
+<header><h1 id="tag_Calculate Amortization">
+Calculate Amortization
+</h1></header>
+<article>
+
+<h3 id="calculate-your-amortization">Calculate your amortization</h3>
+<p>All you need to do is input the following:</p>
+<ul>
+<li>Price</li>
+<li>Length of mortage, in years</li>
+<li>Projected interest rate, in %</li>
+</ul>
+<form onsubmit="calculateAmortization(); return false;" style="max-width:400px;margin:auto;">
+  <label>Loan Amount:<br>
+    <input type="number" id="loanAmount" required step="0.01">
+  </label>
+<p><label>Annual Interest Rate (%):<br>
+<input type="number" id="annualInterest" required step="0.01">
+</label></p>
+<p><label>Loan Term (Years):<br>
+<input type="number" id="loanTerm" required>
+</label></p>
+<p><button type="submit">Calculate</button></p>
+</form>
+<div id="result" style="max-width:400px;margin:auto;margin-top:1em;"></div>
+<script>
+function calculateAmortization() {
+  const principal = parseFloat(document.getElementById('loanAmount').value);
+  const annualRate = parseFloat(document.getElementById('annualInterest').value) / 100;
+  const years = parseInt(document.getElementById('loanTerm').value);
+  const monthlyRate = annualRate / 12;
+  const numPayments = years * 12;
+
+  const x = Math.pow(1 + monthlyRate, numPayments);
+  const monthlyPayment = (principal * x * monthlyRate) / (x - 1);
+  const totalPayment = monthlyPayment * numPayments;
+  const totalInterest = totalPayment - principal;
+
+  document.getElementById('result').innerHTML = `
+  <strong>Results:</strong><br>
+  Monthly Payment: $${monthlyPayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br>
+  Total Payment: $${totalPayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br>
+  Total Interest: $${totalInterest.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+`;
+
+}
+</script>
+
+
+
+<div id="nextprev">
+<a href="/how-to-install-emacs/"><div id="prevart">Previous:<br>How to Install Emacs</div></a>
+</div>
+<div style="clear:both" class=taglist>
+            <h1>Related<br></h1><h3 style="margin-bottom: 0.2em;">Find similar guides under these tags;</h3>
+		<a id="tag_mortgage" href="http://localhost:1313/tags/mortgage">Mortgage</a> &middot; <a id="tag_finance" href="http://localhost:1313/tags/finance">Finance</a> &middot; <a id="tag_amortization" href="http://localhost:1313/tags/amortization">Amortization</a></div>
+</article>
+</main>
+
+<footer>
+	<a href="http://localhost:1313/">http://localhost:1313/</a><br><br><a href="/index.xml"><img src="/rss.svg" style="max-height:1.5em" alt="RSS Feed" title="Subscribe via RSS for updates."></a>
+</footer>
+
+</body>
+</html>
